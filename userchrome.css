@@ -1,0 +1,75 @@
+/* For styling the entire Joplin app (except the rendered Markdown, which is defined in `userstyle.css`) */
+
+/* Styling of folder notebooks */
+.folders * {
+    font-size: 15px;
+}
+
+.list-item {
+    font-size: 15px !important;
+}
+
+/* Styling of notes list */
+.note-list * {
+    font-size: 14px;
+}
+
+/* Roboto Mono font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+/* Changing of code font */
+pre.CodeMirror-line span[role="presentation"] span.cm-comment {
+    font-family: 'Roboto Mono', monospace !important;
+}
+
+/* Keywords */
+pre.CodeMirror-line span[role="presentation"] span.cm-keyword {
+    font-family: 'Roboto Mono', monospace !important;
+}
+
+/* Variables */
+pre.CodeMirror-line span[role="presentation"] span.cm-variable {
+    font-family: 'Roboto Mono', monospace !important;
+    color: #add0ec;
+}
+
+/* Operator */ 
+pre.CodeMirror-line span[role="presentation"] span.cm-operator {
+    font-family: 'Roboto Mono', monospace !important;
+    color: #DCDCDC;
+}
+
+/* Type */ 
+pre.CodeMirror-line span[role="presentation"] span.cm-type {
+    font-family: 'Roboto Mono', monospace !important;
+    color: #569CD6;
+}
+
+/* Tab */
+pre.CodeMirror-line span[role="presentation"] span.cm-tab {
+    font-family: 'Roboto Mono', monospace !important;
+}
+
+/* Number */
+pre.CodeMirror-line span[role="presentation"] span.cm-number {
+    font-family: 'Roboto Mono', monospace !important;
+    color: #B8D7A3;
+}
+
+/* String */
+pre.CodeMirror-line span[role="presentation"] span.cm-string {
+    font-family: 'Roboto Mono', monospace !important;
+    color: #da9070;
+}
+
+/* Definiton */
+pre.CodeMirror-line span[role="presentation"] span.cm-def {
+    font-family: 'Roboto Mono', monospace !important;
+    color: #D7BA7D;
+}
+
+/* Property */
+pre.CodeMirror-line span[role="presentation"] span.cm-property {
+    font-family: 'Roboto Mono', monospace !important;
+    color: #D7BA7D;
+}

@@ -1,0 +1,625 @@
+/* For styling the rendered Markdown */
+
+/* ------------------- Roboto Medium 500 font ------------------- */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: medium;
+  src: url(https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ------------------- Roboto Mono font ------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+body {
+  font-size: large;
+  font-family: "Roboto", sans-serif;
+}
+
+/*------------------- Implement counters and numbering for h1-h6 titles ------------------- */
+body {
+  counter-reset: h2;
+}
+
+h2 {
+  counter-reset: h3;
+}
+
+h3 {
+  counter-reset: h4;
+}
+
+h4 {
+  counter-reset: h5;
+}
+
+h5 {
+  counter-reset: h6;
+}
+
+h2:before {
+  content: counter(h2, decimal) ". ";
+  counter-increment: h2;
+}
+
+h3:before {
+  content: counter(h2, decimal) "." counter(h3, decimal) ". ";
+  counter-increment: h3;
+}
+
+h4:before {
+  content: counter(h2, decimal) "." counter(h3, decimal) "." counter(h4, decimal) ". ";
+  counter-increment: h4;
+}
+
+h5:before {
+  content: counter(h2, decimal) "." counter(h3, decimal) "." counter(h4, decimal) "." counter(h5, decimal) ". ";
+  counter-increment: h5;
+}
+
+h6:before {
+  content: counter(h2, decimal) "." counter(h3, decimal) "." counter(h4, decimal) "." counter(h5, decimal) "."
+    counter(h6, decimal) ". ";
+  counter-increment: h6;
+}
+
+/* ------------------- Implement similar counters and numbering in the TOC ------------------- */
+nav.table-of-contents li ul {
+  counter-reset: toc-counter;
+}
+nav.table-of-contents li {
+  display: block;
+}
+nav.table-of-contents :not(li) ul li:before {
+  content: counters(toc-counter, ".") " ";
+  counter-increment: toc-counter;
+}
+
+/* ------------------- Emphasis and strong ------------------- */
+b, strong {
+  font-weight: bold;
+  color: #ff5050;
+}
+
+/* ------------------- Definiton title ------------------- */
+dt {
+  font-size: larger;
+  font-weight: bold;
+  border-bottom: 1px solid rgba(105, 105, 105, 0.788);
+  padding-bottom: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+dt::before {
+  content: "\1F4A1 ";
+  margin-right: 2px;
+  font-weight: bold;
+  font-size: larger;
+}
+
+/* ------------------- Definiton body ------------------- */
+dl {
+  border: 2px solid dimgrey;
+  border-left-width: thick;
+  padding: 6px;
+  color: #000000;
+  background-color: #bfc2c5;
+  
+  border-radius: 2px; 
+  word-wrap: break-word;
+  box-shadow: 3px 3px 7px 0 rgba(0,0,0,0.3); 
+}
+
+dl strong {
+  font-weight: bold;
+  color: #000000;
+}
+
+/* ------------------- ==Marked== ------------------- */
+mark {
+  padding: 1px 2px;
+  background-color: beige;
+}
+
+/* ------------------- Code block ------------------- */
+code {
+  font-size: large;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* ------------------- Inline code ------------------- */
+.inline-code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: large;
+  border: 1px inset white;
+  padding: 4px;
+}
+
+/* ------------------- Spoilers custom ------------------- */
+.summary-title {
+  font: inherit;
+  font-size: larger;
+}
+
+/* ------------------- Image center and adding background ------------------- */
+dia {
+  text-align: center;
+}
+
+dia > p > img {
+  margin: auto;
+  background-color: gray;
+  border: 1px dashed black;
+  padding: 5px;
+}
+
+/* ------------------- Mermaid dark theme ------------------- */
+div.mermaid {
+  background-color: #1D2024 !important;
+  text-align: center;
+}
+
+div.mermaid text {
+  color: white !important;
+}
+
+.label {
+  font-family: inherit;
+  color: black !important;
+}
+
+.label text {
+  fill: black !important;
+}
+
+.node rect,
+.node circle,
+.node ellipse,
+.node polygon,
+.node path {
+  fill: white !important;
+  stroke: black !important;
+  stroke-width: 1px;
+  /*stroke-dasharray: 3px;*/
+}
+
+.node .label {
+  text-align: center;
+}
+.node.clickable {
+  cursor: pointer;
+}
+
+.arrowheadPath {
+  fill: white !important;
+}
+
+.edgePath .path {
+  stroke: white !important;
+  stroke-width: 1.5px;
+}
+
+.flowchart-link {
+  stroke: white !important;
+  fill: none;
+}
+
+.edgeLabel {
+  background-color: #1D2024 !important;
+  text-align: center;
+  color: white !important;
+}
+.edgeLabel rect {
+  fill: transparent !important;
+  opacity: 0.5;
+}
+
+.cluster rect {
+  fill: transparent !important;
+  stroke: white !important;
+}
+
+/* ------------------- Code highlighting ------------------- */
+.hljs {
+  background: #1E1E1E;
+  color: #DCDCDC;
+}
+
+.hljs-keyword,
+.hljs-literal,
+.hljs-symbol,
+.hljs-name {
+  color: #569CD6;
+}
+.hljs-link {
+  color: #569CD6;
+  text-decoration: underline;
+}
+
+.hljs-built_in,
+.hljs-type {
+  color: #4EC9B0;
+}
+
+.hljs-number,
+.hljs-class {
+  color: #B8D7A3;
+}
+
+.hljs-string,
+.hljs-meta-string {
+  color: #D69D85;
+}
+
+.hljs-regexp,
+.hljs-template-tag {
+  color: #9A5334;
+}
+
+.hljs-subst,
+.hljs-formula {
+  color: #DCDCDC;
+}
+
+.hljs-function > .hljs-params {
+  color: #DCDCDC;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #46853c;
+  font-style: italic;
+}
+
+.hljs-doctag {
+  color: #608B4E;
+}
+
+.hljs-meta,
+.hljs-meta-keyword,
+.hljs-tag {
+  color: #9B9B9B;
+}
+
+.hljs-variable,
+.hljs-template-variable {
+  color: #BD63C5;
+}
+
+.hljs-attr,
+.hljs-attribute {
+  color: #9CDCFE;
+}
+
+.hljs-section {
+  color: gold;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-title,
+.hljs-bullet,
+.hljs-selector-tag,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #D7BA7D;
+}
+
+.hljs-addition {
+  background-color: #144212;
+  display: inline-block;
+  width: 100%;
+}
+
+.hljs-deletion {
+  background-color: #600;
+  display: inline-block;
+  width: 100%;
+}
+
+/* ------------------- Coloured tags ------------------- */
+/* Big box */
+theo, lem, def, qdef, qexa, rls, note, b-pink, b-purple {
+  width: 90%;
+  display: block;
+  margin-left: 20px; 
+  padding: 10px;
+  border: 1px solid;
+  border-left: 5px solid;
+  border-radius: 2px; 
+  word-wrap: break-word;
+  box-shadow: 3px 3px 7px 0 rgba(0,0,0,0.3); 
+}
+
+/* Small box */
+warn, fax, n {
+  width: 50%;
+  display: block;
+  margin-left: 20px; 
+  padding: 8px;
+  border: 1px solid;
+  border-left: 5px solid;
+  border-radius: 2px; 
+  word-wrap: break-word;
+  box-shadow: 3px 3px 7px 0 rgba(0,0,0,0.3); 
+}
+
+note strong,
+rls strong,
+theo strong,
+warn strong,
+lem strong,
+fax strong,
+ir-fax strong,
+il-fax strong,
+ir-n strong,
+il-n strong {
+  font-weight: bold;
+  color : #000000;
+}
+
+/* Lemma */
+lem {
+  border-color: #5fa04e;
+  background-color: #c5e5b4; 
+  color : #000000;
+}
+
+lem:before {
+  font-weight: bold;
+  content: "Lemma:"
+}
+
+/* Warn */
+warn {
+  border-color: #f65354;
+  background-color: #fad3d4; 
+  color : #000000;
+}
+
+warn:before {
+  content: "\26A0";
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: larger;
+}
+
+/* Theory */
+theo {
+  border-color: #229ade;
+  background-color: #bbe5fb; 
+  color : #000000;
+}
+
+theo:before {
+  font-weight: bold;
+  content: "Formula:";
+  font-size: large;
+}
+
+theo > div.joplin-editable {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+theo > div[class="joplin-editable"] > span.katex-display {
+  border: 1px solid;
+  padding: 5px;
+  display: inline-block;
+}
+
+/* Definition */
+def {
+  border-color: gray;
+  background-color: transparent; 
+}
+
+def:before {
+	font-weight: bold;
+	content: "\1F50E  Definition:";
+  font-size: large;
+  color: #ff5050;
+}
+
+/* Quick definition */
+qdef {
+  border-color: gray;
+  background-color: transparent; 
+}
+
+qdef:before {
+  content: "\2753";
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: larger;
+}
+
+/* Quick example */
+qexa {
+  border-color: gray;
+  background-color: transparent; 
+}
+
+qexa:before {
+  content: "\1F4CD";
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: larger;
+}
+
+
+/* Rules */
+rls {
+  border-color: #06cfb4;
+  background-color: #acd8d2; 
+  color : #000000;
+}
+
+rls::before {
+  font-weight: bold;
+  content: "Rules:";
+  font-size: large;
+}
+
+/* Fact */
+fax /*, ir-fax, il-fax*/ {
+  border-color: dimgrey;
+  background-color: #bfc2c5;
+  color : #000000;
+}
+
+fax::before/*,
+ir-fax::before,
+il-fax::before*/{
+  font-weight: bold;
+  content: "\1F4CC  Fact:";
+  font-size: large;
+}
+
+/* Note */
+note {
+  border-color: rgb(230, 218, 64);
+  background-color: #faf9b3;
+  color : #000000;
+}
+
+note:before {
+  content: "\1F4DD";
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: larger;
+}
+
+/* Other tags */
+b-purple {
+  border-color: #af74e8;
+  background-color: #ead9fb; 
+  color : #000000;
+}
+
+b-pink {
+  border-color: #ed5393;
+  background-color: #fad3e5; 
+  color : #000000;
+}
+
+/* Tooltip container */
+tt {
+  font: inherit;
+  position: relative;
+  border-bottom: 1px dashed dimgray;
+}
+
+tt::after {
+  content: "\2753";
+  font-size: 15px;
+  margin-bottom: 2px;
+  z-index: 1;
+  position: absolute;
+  bottom: 7px;
+}
+
+tt:hover::after {
+  font: inherit;
+  background: #b8bbbe;
+  color:#000000;
+  border: 1px solid;
+  border-color: rgb(105, 105, 105);
+  border-radius: 4px;
+  
+  content: attr(title);
+  display: block;
+  bottom: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  position: absolute;    
+  width: 280px;
+  z-index: 1;
+}
+
+/* 
+tt .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  position: absolute;
+  z-index: 1;
+}
+
+
+tt:hover .tooltiptext {
+  visibility: visible;
+}
+
+tt .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  right: 100%; 
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent black transparent transparent;
+}
+*/
+/* ------------------- Exporting notes to PDF ------------------- */
+@media print {
+
+  /* Definition body */
+  dl {
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 8px;
+    background-color: #747474;
+    color: white;
+  }
+
+   /* Definition title */
+  dt {
+    font-size: large;
+    font-weight: bold;
+    padding: 5px;
+    text-decoration: underline;
+    color: white;
+  }
+
+  /* Inline code */
+  .inline-code {
+    font-size: large;
+    border: 1px inset rgb(175, 175, 175);
+    padding: 4px;
+  }
+
+  /* Spoiler block title */
+  .summary-title {
+    background-color: none;
+  }
+
+  /* Spoiler block body */
+  .summary-content {
+    background-color: none;
+    font-size: large;
+    font-family: sans-serif;
+  }
+
+  dia > p > img {
+    background-color: transparent;
+    border: none;
+  }
+}
