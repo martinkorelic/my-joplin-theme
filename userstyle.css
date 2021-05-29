@@ -330,9 +330,9 @@ div.mermaid text {
 
 /* ------------------- Coloured tags ------------------- */
 /* Big box */
-theo, lem, def, qdef, qexa, rls, note, b-pink, b-purple {
+theo, lem, def, qdef, qtip, qexa, rls, note, quo, b-pink, b-purple {
   width: 90%;
-  display: block;
+  display: inline-block;
   margin-left: 20px; 
   padding: 10px;
   border: 1px solid;
@@ -341,6 +341,8 @@ theo, lem, def, qdef, qexa, rls, note, b-pink, b-purple {
   word-wrap: break-word;
   box-shadow: 3px 3px 7px 0 rgba(0,0,0,0.3); 
 }
+
+/* Stacking boxes */
 
 /* Small box */
 warn, fax, n {
@@ -458,6 +460,18 @@ qexa:before {
   font-size: larger;
 }
 
+/* Quick tip */
+qtip {
+  border-color: gray;
+  background-color: transparent; 
+}
+
+qtip:before {
+  content: "\2757";
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: larger;
+}
 
 /* Rules */
 rls {
@@ -488,15 +502,36 @@ il-fax::before*/{
 }
 
 /* Note */
-note {
+n {
   border-color: rgb(230, 218, 64);
-  background-color: #faf9b3;
+  background-color: #fcfbc5;
   color : #000000;
 }
 
-note:before {
+n:before {
   content: "\1F4DD";
   margin-right: 5px;
+  font-weight: bold;
+  font-size: larger;
+}
+
+/* Quote */
+quo {
+  border-color: gray;
+  background-color: transparent;
+  opacity: .7;
+}
+
+quo:before {
+  content: "\"";
+  margin-right: 3px;
+  font-weight: bold;
+  font-size: larger;
+}
+
+quo::after {
+  content: "\"";
+  margin-left: 3px;
   font-weight: bold;
   font-size: larger;
 }
@@ -512,6 +547,99 @@ b-pink {
   border-color: #ed5393;
   background-color: #fad3e5; 
   color : #000000;
+}
+
+/* Definition container */
+defs > blockquote {
+  border-left: none;
+  opacity: 1;
+  border-top: 1px solid gray;
+}
+
+defs > blockquote  > p:first-child {
+  font-size: xx-large;
+}
+
+defs > blockquote > blockquote {
+  border-left: none;
+  opacity: .8;
+}
+
+/* Translation container */
+trns {
+  display: grid;
+  /*counter-reset: trans;*/
+  border-top: 1px solid gray;
+}
+
+trns > blockquote {
+  border-left: none;
+  opacity: 1;
+  border-bottom: 1px solid gray;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 2px;
+  padding-left: 0.3em;
+  word-break: break-word;
+}
+
+/*trns > blockquote > p:first-child:before {
+  content: counter(trans, decimal) ". ";
+  counter-increment: trans;
+}*/
+
+trns > blockquote > blockquote {
+  border-left: none;
+  opacity: .8;
+  margin: 0;
+  padding: 0;
+  word-break: break-word;
+}
+
+/* Pros/cons container */
+pcns {
+  display: grid;
+  /*counter-reset: trans;*/
+  border: 1px solid gray;
+}
+
+pcns > blockquote {
+  border-left: none;
+  opacity: 1;
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 2px;
+  padding-left: 0.3em;
+  word-break: break-word;
+  color: rgb(32, 170, 32);
+}
+
+pcns > blockquote:not(:last-child) {
+  border-bottom: 1px solid gray;
+}
+
+pcns > blockquote > p:first-child:before {
+  /*content: counter(pcns, decimal) ". ";
+  counter-increment: pcns;*/
+  content: "\2714";
+  margin-right: 5px;
+  font-size: large;
+}
+
+pcns > blockquote > blockquote > p:first-child:before {
+  content: "\274C";
+  margin-right: 5px;
+  font-size: large;
+}
+
+pcns > blockquote > blockquote {
+  border-left: none;
+  opacity: .8;
+  margin: 0;
+  padding: 0;
+  word-break: break-word;
+  color: rgb(231, 90, 90);
 }
 
 /* Tooltip container */
@@ -578,10 +706,11 @@ tt .tooltiptext::after {
   border-color: transparent black transparent transparent;
 }
 */
+
 /* ------------------- Exporting notes to PDF ------------------- */
 @media print {
 
-  /* Definition body */
+  /* Definition body 
   dl {
     border: 1px solid white;
     border-radius: 5px;
@@ -590,14 +719,14 @@ tt .tooltiptext::after {
     color: white;
   }
 
-   /* Definition title */
+    Definition title 
   dt {
     font-size: large;
     font-weight: bold;
     padding: 5px;
     text-decoration: underline;
     color: white;
-  }
+  }*/
 
   /* Inline code */
   .inline-code {
@@ -621,5 +750,94 @@ tt .tooltiptext::after {
   dia > p > img {
     background-color: transparent;
     border: none;
+  }
+
+  /* Eco-printing */
+  b, strong {
+    font-weight: bold;
+    color: black;
+  }
+
+  theo,
+  lem,
+  def,
+  qdef,
+  qtip,
+  qexa,
+  rls,
+  note,
+  quo,
+  b-pink,
+  b-purple,
+  warn,
+  fax,
+  n {
+    background: transparent;
+    box-shadow: none;
+    border-color: lightgray;
+  }
+
+  dl {
+    background: transparent;
+    box-shadow: none;
+    border-color: lightgray;
+  }
+
+  dt::before {
+    content: "";
+  }
+
+  .hljs {
+    background: transparent;
+    color: #383838;
+    /*color: black !important;*/
+  }
+
+  .hljs-function > .hljs-params {
+    color: #383838;
+  }
+
+  .hljs-keyword,
+  .hljs-literal,
+  .hljs-symbol,
+  .hljs-name {
+    color: #2d89d4;
+  }
+  .hljs-link {
+    color: #2d89d4;
+    text-decoration: underline;
+  }
+
+  .hljs-built_in,
+  .hljs-type {
+    color: #21ccaa;
+  }
+
+  .hljs-number,
+  .hljs-class {
+    color: #7aee2d;
+  }
+
+  .hljs-string,
+  .hljs-meta-string {
+    color: #d87f58;
+  }
+
+  .hljs-title,
+  .hljs-bullet,
+  .hljs-selector-tag,
+  .hljs-selector-id,
+  .hljs-selector-class,
+  .hljs-selector-attr,
+  .hljs-selector-pseudo {
+    color: #f19a28;
+  }
+
+  .exported-note {
+    padding: 2px;
+  }
+
+  table th, .jop-tinymce table tr:nth-child(even), table tr:nth-child(even) {
+    background: transparent;
   }
 }
