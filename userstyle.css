@@ -133,7 +133,7 @@ code {
 .inline-code {
   font-family: 'Roboto Mono', monospace;
   font-size: large;
-  border: 1px inset white;
+  border: 1px solid white;
   padding: 4px;
 }
 
@@ -333,7 +333,7 @@ div.mermaid text {
 
 /* ------------------- Coloured tags ------------------- */
 /* Big box */
-theo, lem, def, qdef, qtip, qexa, rls, note, quo, box, b-pink, b-purple {
+theo, lem, def, qdef, qtip, qexa, quo, box {
   width: 90%;
   display: inline-block;
   margin-left: 20px; 
@@ -348,7 +348,7 @@ theo, lem, def, qdef, qtip, qexa, rls, note, quo, box, b-pink, b-purple {
 /* Stacking boxes */
 
 /* Small box */
-warn, fax, n, sbox {
+sbox {
   width: 50%;
   display: inline-block;
   margin-left: 20px; 
@@ -360,12 +360,9 @@ warn, fax, n, sbox {
   box-shadow: 3px 3px 7px 0 rgba(0,0,0,0.3); 
 }
 
-note strong,
-rls strong,
 theo strong,
 warn strong,
 lem strong,
-fax strong,
 ir-fax strong,
 il-fax strong,
 ir-n strong,
@@ -488,48 +485,6 @@ qtip:before {
   font-size: larger;
 }
 
-/* Rules */
-rls {
-  border-color: #06cfb4;
-  background-color: #acd8d2; 
-  color : #000000;
-}
-
-rls::before {
-  font-weight: bold;
-  content: "Rules:";
-  font-size: large;
-}
-
-/* Fact */
-fax /*, ir-fax, il-fax*/ {
-  border-color: dimgrey;
-  background-color: #bfc2c5;
-  color : #000000;
-}
-
-fax::before/*,
-ir-fax::before,
-il-fax::before*/{
-  font-weight: bold;
-  content: "\1F4CC  Fact:";
-  font-size: large;
-}
-
-/* Note */
-n {
-  border-color: rgb(230, 218, 64);
-  background-color: #fcfbc5;
-  color : #000000;
-}
-
-n:before {
-  content: "\1F4DD";
-  margin-right: 5px;
-  font-weight: bold;
-  font-size: larger;
-}
-
 /* Quote */
 quo {
   border-color: gray;
@@ -549,19 +504,6 @@ quo::after {
   margin-left: 3px;
   font-weight: bold;
   font-size: larger;
-}
-
-/* Other tags */
-b-purple {
-  border-color: #af74e8;
-  background-color: #ead9fb; 
-  color : #000000;
-}
-
-b-pink {
-  border-color: #ed5393;
-  background-color: #fad3e5; 
-  color : #000000;
 }
 
 /* Definition container */
@@ -783,6 +725,25 @@ tt .tooltiptext::after {
 }
 */
 
+/* ------------------- Exporting notes to HTML ------------------- */
+
+.exported-note {
+  padding: 0;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.exported-note pre {
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.exported-note .inline-code {
+  font-size: medium;
+  border: 1px solid rgb(175, 175, 175);
+  padding: 4px;
+}
+
 /* ------------------- Exporting notes to PDF ------------------- */
 @media print {
 
@@ -807,7 +768,7 @@ tt .tooltiptext::after {
   /* Inline code */
   .inline-code {
     font-size: large;
-    border: 1px inset rgb(175, 175, 175);
+    border: 1px solid rgb(175, 175, 175);
     padding: 4px;
   }
 
@@ -841,14 +802,8 @@ tt .tooltiptext::after {
   qdef,
   qtip,
   qexa,
-  rls,
-  note,
   quo,
-  b-pink,
-  b-purple,
   warn,
-  fax,
-  n,
   sbox {
     background: transparent;
     box-shadow: none;
@@ -909,10 +864,6 @@ tt .tooltiptext::after {
   .hljs-selector-attr,
   .hljs-selector-pseudo {
     color: #f19a28;
-  }
-
-  .exported-note {
-    padding: 0;
   }
 
   body {
