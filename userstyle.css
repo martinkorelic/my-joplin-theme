@@ -660,6 +660,41 @@ tmln > ul > li {
   padding-left: 20px;
 }
 
+/* ------------------- Scan images ------------------- */
+
+iscan, scan {
+  width: 70%;
+  height: 70%;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+iscan img {
+  -webkit-filter: invert(1);
+  filter: invert(1);
+  display: block;
+}
+
+
+iscan p {
+  text-align: center;
+  margin: 0;
+  opacity: 0.8;
+}
+
+scan img {
+  display: block;
+}
+
+scan p {
+  text-align: center;
+  margin: 0;
+  opacity: 0.8;
+}
+
 /* Tooltip container */
 tt {
   font: inherit;
@@ -867,6 +902,11 @@ tt .tooltiptext::after {
   }
 
   body {
+    margin: 0;
+  }
+
+  .exported-note {
+    padding: 0;
     margin: 0;
   }
 
